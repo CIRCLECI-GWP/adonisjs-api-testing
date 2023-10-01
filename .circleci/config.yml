@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Run Migrations
           command: |
-            mv .env.testing .env
+            mv .env.test .env
             node ace migration:run
       - run:
           name: Run tests
