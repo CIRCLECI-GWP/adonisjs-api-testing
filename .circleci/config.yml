@@ -18,11 +18,14 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-      # - run:
-      #     name: Run Migrations
-      #     command: |
-      #       mv .env.test .env
-      #       node ace migration:run
+      - run:
+          name: Create database folder
+          command: mkdir tmp && touch tmp/db.sqlite3
+      - run:
+          name: Run Migrations
+          command: |
+            mv .env.test .env
+            node ace migration:run
       - run:
           name: Run tests
           command: npm run test
